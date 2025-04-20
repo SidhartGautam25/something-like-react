@@ -1,5 +1,3 @@
-import { withoutNulls } from "./utils/arrays";
-
 /*
 
 Three type of node in our virtual DOM
@@ -9,11 +7,16 @@ Three type of node in our virtual DOM
 
 */
 
+import { withoutNulls } from "../utils/arrays.mjs";
+
+// import { withoutNulls } from "./utils/arrays";
+
 export const DOM_TYPES = {
   TEXT: "text",
   ELEMENT: "element",
   FRAGMENT: "fragment",
 };
+mhkkjkk;
 
 /*
 
@@ -68,3 +71,57 @@ export function hFragment(vNodes) {
     children: mapTextNodes(withoutNulls(vNodes)),
   };
 }
+
+// Testing
+const vDOM = h("form", { class: "login-form", action: "login" }, [
+  h("input", { type: "text", name: "user" }),
+  h("input", { type: "password", name: "pass" }),
+  h("button", { on: { click: "login" } }, ["Login"]),
+]);
+console.log("virtual dom looks like this ");
+console.dir(vDOM, { depth: null });
+/*
+
+Output will be 
+
+{
+  tag: 'form',
+  props: { class: 'login-form', action: 'login' },
+  children: [
+    {
+      tag: 'input',
+      props: { type: 'text', name: 'user' },
+      children: [],
+      type: 'element'
+    },
+    {
+      tag: 'input',
+      props: { type: 'password', name: 'pass' },
+      children: [],
+      type: 'element'
+    },
+    {
+      tag: 'button',
+      props: { on: { click: 'login' } },
+      children: [ { type: 'text', value: 'Login' } ],
+      type: 'element'
+    }
+  ],
+  type: 'element'
+}
+
+ and this virtual dom is for html
+
+<form class="login-form" action="login">
+        <input type="text" name="user">
+        <input type="password" name="pass">
+        <button>Login</button>
+</form>
+
+
+
+
+
+
+
+*/
