@@ -16,7 +16,6 @@ export const DOM_TYPES = {
   ELEMENT: "element",
   FRAGMENT: "fragment",
 };
-mhkkjkk;
 
 /*
 
